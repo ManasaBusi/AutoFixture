@@ -15,6 +15,10 @@ namespace DemoCode
             Customer = customer;
             Items = new List<OrderItem>();
         }
+        public override string ToString()
+        {
+            return $"{Id}-{Customer.CustomerName}";
+        }
     }
 
     public class OrderItem
@@ -23,8 +27,10 @@ namespace DemoCode
         public int Quantity { get; set; }
     }
 
+
     public class Customer
     {
         public string CustomerName { get; set; }
     }
+   
 }
