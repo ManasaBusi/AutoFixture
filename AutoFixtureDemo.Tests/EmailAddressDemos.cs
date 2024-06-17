@@ -20,7 +20,7 @@ namespace AutoFixtureDemo.Tests
             //MailAddress email = fixture.Create<MailAddress>();
             //var sut = new EmailMessage(email.Address, fixture.Create<string>(), fixture.Create<bool>());
 
-            var sut = new EmailMessage(fixture.Create<MailAddress>().Address, fixture.Create<string>(), fixture.Create<bool>());
+            var sut = new EmailMessage(fixture.Create<MailAddress>().Address, fixture.Create<string>(), fixture.Create<bool>(), fixture.Create<string>());
 
             // etc.
 

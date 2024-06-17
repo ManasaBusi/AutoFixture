@@ -10,9 +10,9 @@ namespace AutoFixtureDemo.Tests
         {
             //Arrange
             var fixture = new Fixture();
-            var sut = new EmailMessage(fixture.Create<string>(), fixture.Create<string>(), fixture.Create<bool>());
+            var sut = new EmailMessage(fixture.Create<string>(), fixture.Create<string>(), fixture.Create<bool>(), fixture.Create<string>());
 
-            sut.Id = fixture.Create<Guid>();
+            //sut.Id = fixture.Create<Guid>();
 
             //Etc.
         }
@@ -24,11 +24,11 @@ namespace AutoFixtureDemo.Tests
             //Arrange
             var fixture = new Fixture();
 
-           var sut = new EmailMessage(fixture.Create<string>(), fixture.Create<string>(), fixture.Create<bool>());
+           var sut = new EmailMessage(fixture.Create<string>(), fixture.Create<string>(), fixture.Create<bool>(), fixture.Create<string>());
 
-            sut.Id = fixture.Create<Guid>();
+            //sut.Id = fixture.Create<Guid>();
 
-            sut.MessageType = fixture.Create<EmailMessageType>();
+            //sut.MessageType = fixture.Create<EmailMessageType>();
 
             // etc.
         }
