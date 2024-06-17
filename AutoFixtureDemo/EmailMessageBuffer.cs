@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace DemoCode
@@ -7,14 +6,15 @@ namespace DemoCode
     public class EmailMessageBuffer
     {
         private readonly List<EmailMessage> _emails = new List<EmailMessage>();
-        
-        public int UnsentMessagesCount => _emails.Count;
 
-        public void Add(EmailMessage message)
+        public EmailMessageBuffer(IEmailGateway emailGateway)
         {
-            _emails.Add(message);
+            EmailGateway = emailGateway;
         }
-
+       
+        public IEmailGateway EmailGateway { get; }
+        public int UnsentMessagesCount => _emails.Count;
+       
         public void SendAll()
         {
             for (int i = 0; i < _emails.Count; i++)
@@ -24,6 +24,16 @@ namespace DemoCode
                 Send(email);
                 _emails.Remove(email);
             }
+        }
+
+        private void Send(EmailMessage email)
+        {
+             EmailGateway.Send(email);            
+        }
+
+        public void Add(EmailMessage message)
+        {
+            _emails.Add(message);
         }
 
         public void SendLimited(int maximumMessagesToSend)
@@ -36,12 +46,6 @@ namespace DemoCode
                 Send(email);
                 _emails.Remove(email);
             }
-        }
-
-        private void Send(EmailMessage email)
-        {
-            // simulate sending email
-            Debug.WriteLine("Sending email to: " + email.ToAddress);
         }
     }
 }

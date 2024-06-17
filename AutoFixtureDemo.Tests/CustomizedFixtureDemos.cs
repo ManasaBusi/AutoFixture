@@ -17,25 +17,25 @@ namespace AutoFixtureDemo.Tests
 
         }
 
-        [Fact]
-        public void SettingValueForCustomType()
-        {
-            //Arrange
-            var fixture = new Fixture();
+        //[Fact]
+        //public void SettingValueForCustomType()
+        //{
+        //    //Arrange
+        //    var fixture = new Fixture();
 
-            fixture.Inject(new FlightDetails
-            {
-                DepartureAirportCode = "PER",
-                ArrivalAirportCode = "LHR",
-                FlightDuration = TimeSpan.FromHours(10),
-                AirlineName = "Emirates"
-            });
+        //    fixture.Inject(new FlightDetails
+        //    {
+        //        DepartureAirportCode = "PER",
+        //        ArrivalAirportCode = "LHR",
+        //        FlightDuration = TimeSpan.FromHours(10),
+        //        AirlineName = "Emirates"
+        //    });
 
-            var flight1 = fixture.Create<FlightDetails>();
-            var flight2 = fixture.Create<FlightDetails>();
+        //    var flight1 = fixture.Create<FlightDetails>();
+        //    var flight2 = fixture.Create<FlightDetails>();
 
-            // Assert
-        }
+        //    // Assert
+        //}
 
         [Fact]
         public void CustomCreationFunction()
@@ -92,52 +92,52 @@ namespace AutoFixtureDemo.Tests
             //etc.
         }
 
-        [Fact]
-        public void CustomizedBuilding()
-        {
-            var fixture = new Fixture();
+        //[Fact]
+        //public void CustomizedBuilding()
+        //{
+        //    var fixture = new Fixture();
 
-            //"With" is used to set a property to a specific value.
+        //    //"With" is used to set a property to a specific value.
 
-            var flight = fixture.Build<FlightDetails>()
-                                .With(x => x.ArrivalAirportCode, "LHR")
-                                .With(x => x.DepartureAirportCode, "LAX")
-                                .Create();
-            //etc.
-        }
+        //    var flight = fixture.Build<FlightDetails>()
+        //                        .With(x => x.ArrivalAirportCode, "LHR")
+        //                        .With(x => x.DepartureAirportCode, "LAX")
+        //                        .Create();
+        //    //etc.
+        //}
 
-        [Fact]
-        public void CustomizedBuildingWithActions()
-        {
-            var fixture = new Fixture();
+        //[Fact]
+        //public void CustomizedBuildingWithActions()
+        //{
+        //    var fixture = new Fixture();
 
-            //DO is used to perform a specific action on a specific property in the object being built.
+        //    //DO is used to perform a specific action on a specific property in the object being built.
 
-            var flight = fixture.Build<FlightDetails>()
-                               .With(x => x.ArrivalAirportCode, "LHR")
-                               .With(x => x.DepartureAirportCode, "LAX")
-                               .Without(x => x.MealOptions)
-                               .Do(x => x.MealOptions.Add("Chicken"))
-                               .Do(x => x.MealOptions.Add("Fish"))
-                               .Create();
-        }
+        //    var flight = fixture.Build<FlightDetails>()
+        //                       .With(x => x.ArrivalAirportCode, "LHR")
+        //                       .With(x => x.DepartureAirportCode, "LAX")
+        //                       .Without(x => x.MealOptions)
+        //                       .Do(x => x.MealOptions.Add("Chicken"))
+        //                       .Do(x => x.MealOptions.Add("Fish"))
+        //                       .Create();
+        //}
 
-        [Fact]
-        public void CustomizedBuildingForAllTypesInFixture()
-        {
-            var fixture = new Fixture();
+        //[Fact]
+        //public void CustomizedBuildingForAllTypesInFixture()
+        //{
+        //    var fixture = new Fixture();
 
-            fixture.Customize<FlightDetails>(fd =>
-            fd.With(x => x.DepartureAirportCode, "LHR")
-            .With(x => x.ArrivalAirportCode, "LAX")
-            .With(x => x.AirlineName, "Emirates")
-            .Without(x => x.MealOptions)
-            .Do(x => x.MealOptions.Add("Chicken"))
-            .Do(x => x.MealOptions.Add("Fish")));
+        //    fixture.Customize<FlightDetails>(fd =>
+        //    fd.With(x => x.DepartureAirportCode, "LHR")
+        //    .With(x => x.ArrivalAirportCode, "LAX")
+        //    .With(x => x.AirlineName, "Emirates")
+        //    .Without(x => x.MealOptions)
+        //    .Do(x => x.MealOptions.Add("Chicken"))
+        //    .Do(x => x.MealOptions.Add("Fish")));
 
-            var flight1 = fixture.Create<FlightDetails>();
-            var flight2 = fixture.Create<FlightDetails>();
+        //    var flight1 = fixture.Create<FlightDetails>();
+        //    var flight2 = fixture.Create<FlightDetails>();
             
-        }
+        //}
     }
 }

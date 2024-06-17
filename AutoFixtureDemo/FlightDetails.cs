@@ -1,47 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AutoFixtureDemo;
+using System;
 
 namespace DemoCode
 {
     public class FlightDetails
     {
-        private string _arrivalAirportCode;
-        private string _departureAirportCode;
-
-        public string DepartureAirportCode
+        public FlightDetails(AirportCode departureAirportCode, AirportCode arrivalAirportCode)
         {
-            get => _departureAirportCode;
-            set
-            {
-                EnsureValidAirportCode(value);
-                _departureAirportCode = value;
-            }
+            //EnsureValidAirportCode(departureAirportCode);
+            //EnsureValidAirportCode(arrivalAirportCode);
+
+            DepartureAirportCode = departureAirportCode;
+            ArrivalAirportCode = arrivalAirportCode;
         }
 
-        public string ArrivalAirportCode
-        {
-            get => _arrivalAirportCode;
-            set
-            {
-                EnsureValidAirportCode(value);
-                _arrivalAirportCode = value;
-            }
-        }
-
+        public AirportCode DepartureAirportCode { get; }
+        public AirportCode ArrivalAirportCode { get; }        
         public TimeSpan FlightDuration { get; set; }
         public string AirlineName { get; set; }
-        public List<string> MealOptions { get; set; } = new List<string>();
 
-        private void EnsureValidAirportCode(string airportCode)
-        {
-            var isWrongLength = airportCode.Length != 3;
+        //private void EnsureValidAirportCode(string airportCode)
+        //{
+        //    var isWrongLength = airportCode.Length != 3;
 
-            var isWrongCase = airportCode != airportCode.ToUpperInvariant();
+        //    var isWrongCase = airportCode != airportCode.ToUpperInvariant();
 
-            if (isWrongLength || isWrongCase)
-            {
-                throw new Exception(airportCode + " is an invalid airport");
-            }
-        }
+        //    if (isWrongLength || isWrongCase)
+        //    {
+        //        throw new Exception(airportCode + " is an invalid airport");
+        //    }
+        //}
     }
 }
